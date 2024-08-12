@@ -1,18 +1,16 @@
-exports.config = {
-    specs: [
-        './features/**/*.feature'
-    ],
+export const config = {
+    runner: 'local',
+    specs: ['./src/features/**/*.feature'],
     exclude: [],
-    maxInstances: 10,
+    maxInstances: 1,
     capabilities: [{
         platformName: 'Android',
-        'appium:deviceName': 'emulator-5554', // Use your device/emulator name
-        'appium:platformVersion': '11.0', // Your Android version
-        'appium:app': '/path/to/your/app.apk', // Path to the APK
+        'appium:deviceName': '1591973763000B6',
+        'appium:platformVersion': '14.0',
+        'appium:app': 'E:\\Automation\\Android-MyDemoAppRN.1.3.0.build-244.apk',
         'appium:automationName': 'UiAutomator2',
         'appium:autoGrantPermissions': true,
-        'appium:noReset': true,
-        maxInstances: 1
+        'appium:noReset': false,
     }],
     logLevel: 'info',
     bail: 0,
@@ -20,11 +18,14 @@ exports.config = {
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
-    services: ['appium'],
+    services: [['appium', {
+        command: 'appium',
+        port: 4730 // or your chosen port
+    }]],
     framework: 'cucumber',
     reporters: ['spec'],
     cucumberOpts: {
-        require: ['./features/step-definitions/'],
+        require: ['./src/features/stepDefinitions/*.mjs'],
         backtrace: false,
         requireModule: [],
         dryRun: false,
