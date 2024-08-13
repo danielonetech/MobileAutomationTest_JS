@@ -1,7 +1,7 @@
 export default class DashboardPage {
-    get welcomeMessage() { return $('//android.view.ViewGroup[@content-desc="container header"]/android.widget.TextView'); }
+    get welcomeMessage() { return $('//android.view.ViewGroup[@content-desc="container header"]'); }
     get option() { return $('android.widget.ImageView'); }
-    get clickLogin() { return $('//android.view.ViewGroup[@content-desc="menu item log in"]/android.widget.TextView'); }
+    get clickLogin() { return $('//android.view.ViewGroup[@content-desc="menu item log in"]'); }
 
     async isDisplayed() {
         return this.welcomeMessage.isDisplayed();
