@@ -23,7 +23,14 @@ export const config = {
         port: 4730 // or your chosen port
     }]],
     framework: 'cucumber',
-    reporters: ['spec'],
+    reporters: [
+        'spec',
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
+        }]
+    ],
     cucumberOpts: {
         require: ['./src/features/stepDefinitions/*.mjs'],
         backtrace: false,

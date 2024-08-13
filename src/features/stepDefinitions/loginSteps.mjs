@@ -20,9 +20,12 @@ Then('I should see the {string}', async (expectedOutcome) => {
     } else {
          //Add logic for negative scenarios
         const loginPage = new LoginPage();
-        await loginPage.getErrorMessageText();
-        //const errorMessage = await loginPage.getErrorMessageText();
-        //await expect(errorMessage).toHaveTextContaining(expectedOutcome)
+        const errorMessage = await loginPage.getErrorMessageText();
+        if (errorMessage) { // Check if errorMessage is not null
+            await expect(errorMessage).toHaveTextContaining(expectedOutcome);
+        } else {
+            console.error('No error message found'); // Or throw an error
+        }
         await loginPage.clearInput();
     }
 });

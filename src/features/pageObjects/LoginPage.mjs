@@ -2,9 +2,9 @@ export default class LoginPage {
     get usernameField() { return $('//android.widget.EditText[@content-desc="Username input field"]'); }
     get passwordField() { return $('//android.widget.EditText[@content-desc="Password input field"]'); }
     get loginButton() { return $('//android.view.ViewGroup[@content-desc="Login button"]'); }
-    get genericErrorMessageText() { return $('//android.view.ViewGroup[@content-desc="generic-error-message"]/android.widget.TextView'); }
-    get usernameErrorMessageText() { return $('//android.view.ViewGroup[@content-desc="Username-error-message"]/android.widget.TextView'); }
-    get passwordErrorMessageText() { return $('//android.view.ViewGroup[@content-desc="Password-error-message"]/android.widget.TextView'); }
+    get genericErrorMessageText() { return $('generic-error-message'); }
+    get usernameErrorMessageText() { return $('Username-error-message'); }
+    get passwordErrorMessageText() { return $('Password-error-message'); }
 
     async login(username, password) {
         await this.usernameField.setValue(username);
@@ -19,11 +19,14 @@ export default class LoginPage {
 
     async getErrorMessageText() {
         if (await this.genericErrorMessageText.isDisplayed()) {
-            return await this.genericErrorMessageText.isDisplayed();
+            return await this.genericErrorMessageText.getText();
         } else if (await this.usernameErrorMessageText.isDisplayed()) {
-            return await this.usernameErrorMessageText.isDisplayed();
-        } else{
-            return await this.passwordErrorMessageText.isDisplayed();
+            return await this.usernameErrorMessageText.getText();
+        } else if(await this.passwordErrorMessageText.isDisplayed()){
+            return await this.passwordErrorMessageText.getText();
+        }
+        else {
+            return null; // Return null if no error message is found
         }
     }
 }
