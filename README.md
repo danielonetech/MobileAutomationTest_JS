@@ -4,7 +4,7 @@
 2. Install apk in real device and attach to window machine.
 3. Run 'npm install'
 4. Run 'npx wdio run wdio.conf.mjs'
-5. AFter success of all test, all logs will be stored under "allure-results".
+5. After success of all test, all logs will be stored under "allure-results".
 6. run below command to generate allure report from logs
 7.    "allure generate allure-results --clean -o allure-report"
 8. Run below command to open the allure report
