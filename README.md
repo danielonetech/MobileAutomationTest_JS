@@ -6,7 +6,7 @@
 4. Run 'npx wdio run wdio.conf.mjs'
 5. AFter success of all test, all logs will be stored under "allure-results".
 6. run below command to generate allure report from logs
-   "allure generate allure-results --clean -o allure-report"
+7.    "allure generate allure-results --clean -o allure-report"
 8. Run below command to open the allure report
-   "allure open allure-report"
+9.    "allure open allure-report"
 
